@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登陆页面</title>
+    <link rel="stylesheet" type="text/css" href="semantic_ui/semantic.min.css">
+    <script src="semantic_ui/semantic.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <style>
+        .div1 {
+            background: #22313a;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            text-align: center;
+        }
+
+        .div2 {
+            height: 30%;
+            background: #1e2a31;
+        }
+
+        .div3 {
+            position: relative;
+            margin: -150px auto;
+            /*background: #00ffffff;*/
+            opacity: 0.95;
+            width: 500px;
+            height: 600px;
+            border: 0.5px solid #00B5AD;
+            display: block;
+        }
+
+        .img1 {
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .loginUpArea {
+            height: 150px;
+        }
+
+        .loginUpArea label {
+            color: white;
+            display: inline;
+            font-size: 16px;
+        }
+
+        .login_lable {
+            color: #fff !important;
+            font-size: 16px !important;
+            margin: 0px 0px 15px 0px !important;
+        }
+
+        .loginDownArea {
+            padding: 15px;
+        }
+
+        .ui button {
+            width: 100% !important;
+            margin: 40px 0px 10px 0px !important;
+        }
+
+        #username_tip {
+            display: none;
+            position: absolute;
+            left: 5px;
+        }
+
+        #password_tip {
+            display: none;
+            position: absolute;
+            left: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="div1">
+    <div class="div2">
+    </div>
+
+    <div class="div3">
+        <div class="loginUpArea">
+            <img class="img1" src="imgs/login_icon.png"/>
+            <label>你好，请登录</label>
+        </div>
+
+        <div class="loginDownArea">
+            <form class="ui form" id="login_form">
+                <div class="field">
+                    <label class="login_lable">用户名</label>
+                    <input id="username" type="text" name="first-name" placeholder="User Name" oninput="checkUserNameAndPassword()">
+                    <div id="username_tip" class="ui pointing red basic label">Please enter a value</div>
+                </div>
+                <div class="field">
+                    <label class="login_lable">密&nbsp&nbsp&nbsp&nbsp码</label>
+                    <input id="password" type="text" name="last-name" placeholder="Password" oninput="checkUserNameAndPassword()">
+                    <div id="password_tip" class="ui pointing red basic label">Please enter a value</div>
+                </div>
+                <button class="ui primary button" type="button" onclick="checkUserNameAndPassword()">登&nbsp&nbsp&nbsp陆</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    function checkUserNameAndPassword() {
+        var k = $("#username").val();
+        if(k==""){
+//            $("#username").focus();
+            $("#username_tip").show()
+//            return;
+        }else{
+            $("#username_tip").hide()
+        }
+//        if($("#password").val()==""){
+//            $("#password").focus();
+//            $("#password_tip").show();
+//            return;
+//        }else{
+//            $("#password_tip").hide();
+//        }
+//        var name = document.getElementById("username");
+//        var name_tip = document.getElementById("username_tip");
+//        if (name.value.length == 0) {
+//            name.focus();
+//            name_tip.style.visibility = "visible";
+//            return false;
+//        }else{
+//            name_tip.style.visibility = "hidden";
+////            document.getElementById("login_form").submit();
+//            return true;
+//        }
+    }
+
+</script>
+</body>
+</html>

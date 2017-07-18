@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>后台登陆页面</title>
-    <link rel="stylesheet" type="text/css" href="semantic_ui/semantic.min.css">
-    <script src="semantic_ui/semantic.min.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../semantic_ui/semantic.min.css">
+    <script src="../../semantic_ui/semantic.min.js"></script>
+    <script src="../../js/jquery-3.2.1.min.js"></script>
     <style>
         .div1 {
             background: #22313a;
@@ -86,56 +86,62 @@
 
     <div class="div3">
         <div class="loginUpArea">
-            <img class="img1" src="imgs/login_icon.png"/>
+            <img class="img1" src="../../imgs/login_icon.png"/>
             <label>你好，请登录</label>
         </div>
 
         <div class="loginDownArea">
-            <form class="ui form" id="login_form">
+            <form class="ui form" id="login_form" method = 'post'  action = 'login' >
                 <div class="field">
                     <label class="login_lable">用户名</label>
-                    <input id="username" type="text" name="first-name" placeholder="User Name" oninput="checkUserNameAndPassword()">
+                    <input id="username" type="text" name="first-name" placeholder="User Name" oninput="checkUserName()">
                     <div id="username_tip" class="ui pointing red basic label">Please enter a value</div>
                 </div>
                 <div class="field">
                     <label class="login_lable">密&nbsp&nbsp&nbsp&nbsp码</label>
-                    <input id="password" type="text" name="last-name" placeholder="Password" oninput="checkUserNameAndPassword()">
+                    <input id="password" type="text" name="last-name" placeholder="Password" oninput="checkUserPassword()">
                     <div id="password_tip" class="ui pointing red basic label">Please enter a value</div>
                 </div>
-                <button class="ui primary button" type="button" onclick="checkUserNameAndPassword()">登&nbsp&nbsp&nbsp陆</button>
+                <button class="ui primary button" type="button" onclick="login()">登&nbsp&nbsp&nbsp陆</button>
             </form>
         </div>
     </div>
 </div>
 <script>
 
-    function checkUserNameAndPassword() {
+    function checkUserName() {
         var k = $("#username").val();
         if(k==""){
-//            $("#username").focus();
+            $("#username").focus();
             $("#username_tip").show()
-//            return;
+            return false;
         }else{
             $("#username_tip").hide()
+            return true;
         }
-//        if($("#password").val()==""){
-//            $("#password").focus();
-//            $("#password_tip").show();
-//            return;
-//        }else{
-//            $("#password_tip").hide();
-//        }
-//        var name = document.getElementById("username");
-//        var name_tip = document.getElementById("username_tip");
-//        if (name.value.length == 0) {
-//            name.focus();
-//            name_tip.style.visibility = "visible";
-//            return false;
-//        }else{
-//            name_tip.style.visibility = "hidden";
-////            document.getElementById("login_form").submit();
-//            return true;
-//        }
+
+    }
+
+    function checkUserPassword() {
+        if($("#password").val()==""){
+            $("#password").focus();
+            $("#password_tip").show();
+            return false;
+        }else{
+            $("#password_tip").hide();
+            return true;
+        }
+    }
+
+    function login() {
+        var login_name = $("#username").val();
+        var login_pwd = $("#password").val();
+        if(login_name==""||login_pwd==""){
+            alert("用户名密码不能为空！")
+        }else{
+            //进行登陆接口请求
+            $("#login_form").submit();
+        }
     }
 
 </script>
